@@ -103,12 +103,20 @@ void Game::ProcessInput()
 
 void Game::Update() 
 {
-
+	// TODO: Update Game Objects
 }
 
 void Game::Render() 
 {
+	// Select an RGBa color
+	SDL_SetRenderDrawColor(renderer, 255, 0, 0, 5);
+	// Clear renderer
+	SDL_RenderClear(renderer);
 
+	// TODO: Render all game objects here
+
+	// Draw and display objects and colors
+	SDL_RenderPresent(renderer);
 }
 
 void Game::Destroy() 

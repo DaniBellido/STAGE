@@ -29,14 +29,27 @@ void Game::Initialize()
 		return;
 	}
 
+	
+	// SDL struct to store display mode information
+	SDL_DisplayMode displayMode;
+
+	// SDL function gets the current display mode of the first monitor and stores it in the displayMode structure
+	SDL_GetCurrentDisplayMode(0, &displayMode);
+
+	// Passing width and height values to class attributes
+	windowWidth = displayMode.w;
+	windwHeight = displayMode.h;
+
+
+
 	// Creating a Window (SDL Struct pointer)
 	window = SDL_CreateWindow(
 		"STAGE: Simple Two-dimensional Animation Game Engine",    // Window Title
 		SDL_WINDOWPOS_CENTERED,					                  // Window X Position
 		SDL_WINDOWPOS_CENTERED,					                  // Window Y Position
-		800,									                  // Window Width	
-		600,									                  // Window Height
-		SDL_WINDOW_MAXIMIZED);					                  // Window Type
+		windowWidth,									          // Window Width	
+		windwHeight,									          // Window Height
+		SDL_WINDOW_MAXIMIZED);					                  // Window Type          _BORDERLESS
 
 	if (!window) 
 	{
@@ -47,8 +60,9 @@ void Game::Initialize()
 
 	// Create a renderer (SDL Struct pointer) on the created window (frame)
 	// second argument:  index of the rendering driver to use. -1 uses the default one
-	// third argument: allows you to specify additional options or flags for creating the renderer
-	renderer = SDL_CreateRenderer(window, -1, 0);
+	// third argument: allows you to specify additional options or flags to use to accelerated GPU and VSync to
+	// synchronize the frame rate of a game with a gaming monitor's refresh rate
+	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 
 	if (!renderer) 
 	{
@@ -56,6 +70,9 @@ void Game::Initialize()
 		std::cerr << "Error creating the SDL renderer." << std::endl;
 		return;
 	}
+
+	//Sets real full screen resolution
+	SDL_SetWindowFullscreen(window, SDL_WINDOW_FULLSCREEN);
 	
 	// Only true if creating window and renderer was successful 
 	isRunning = true;
@@ -64,6 +81,8 @@ void Game::Initialize()
 
 void Game::Run() 
 {
+	Setup();
+
 	// Game Loop
 	while (isRunning) 
 	{
@@ -101,6 +120,11 @@ void Game::ProcessInput()
 	}
 }
 
+void Game::Setup() 
+{
+	//TODO: Init game objects
+}
+
 void Game::Update() 
 {
 	// TODO: Update Game Objects
@@ -109,14 +133,25 @@ void Game::Update()
 void Game::Render() 
 {
 	// Select an RGBa color
-	SDL_SetRenderDrawColor(renderer, 255, 0, 0, 5);
-	// Clear renderer
+	SDL_SetRenderDrawColor(renderer, 0, 150, 0, 255);
+	// Clear renderer with the selected color
 	SDL_RenderClear(renderer);
 
-	// TODO: Render all game objects here
+	// #################### Render all game objects here ####################
 
-	// Draw and display objects and colors
-	SDL_RenderPresent(renderer);
+
+	// SAMPLE: Draw a rectangle
+	SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);  // <- Pick a new color
+	SDL_Rect player = { 10,10,20,20 };                     // <- Create a rectangle {x, y, w, h}
+	SDL_RenderFillRect(renderer, &player);                 // <- Draw a rectangle on top of renderer with the last color selected
+
+
+	// ######################################################################
+	
+
+
+	// Double-Buffered Render: Draw and display on screen all objects previously called swapping buffers in each frame
+	SDL_RenderPresent(renderer); 
 }
 
 void Game::Destroy() 

@@ -7,16 +7,17 @@
 #include <imgui/imgui.h>
 #include <sol/sol.hpp>
 #include <iostream>
+#include "Logger.h"
 
 Game::Game() 
 {
 	isRunning = false;
-	std::cout << "Game Constructor called!" << std::endl;
+	Logger::Log("Game Constructor called!");
 }
 
 Game::~Game() 
 {
-	std::cout << "Game Destructor called!" << std::endl;
+	Logger::Log("Game Destructor called!");
 }
 
 void Game::Initialize() 
@@ -25,7 +26,7 @@ void Game::Initialize()
 	if (SDL_Init(SDL_INIT_EVERYTHING) != 0) 
 	{
 		// If init not possible output an error and return
-		std::cerr << "Error initializing SDL." << std::endl;
+		Logger::Err("Error initializing SDL.");
 		return;
 	}
 
@@ -54,7 +55,7 @@ void Game::Initialize()
 	if (!window) 
 	{
 		// If window not created output an error and return
-		std::cerr << "Error creating the SDL window." << std::endl;
+		Logger::Err("Error creating the SDL window.");
 		return;
 	}
 
@@ -67,7 +68,7 @@ void Game::Initialize()
 	if (!renderer) 
 	{
 		// If renderer not created output an error and return
-		std::cerr << "Error creating the SDL renderer." << std::endl;
+		Logger::Err("Error creating the SDL renderer.");
 		return;
 	}
 
@@ -137,7 +138,7 @@ void Game::Update()
 
 	if (timeToWait > 0 && timeToWait <= MILLISECS_PER_FRAME) 
 	{
-		SDL_Delay(timeToWait);
+		SDL_Delay(timeToWait);  // <---------------  Comment SDL_Delay to uncap FPS (Currently capped to 60FPS)
 	}
 	
 	// The diference in ticks since the last frame, converted to seconds

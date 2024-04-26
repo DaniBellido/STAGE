@@ -1,2 +1,14 @@
 ﻿  Game.cpp
+D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Game.cpp(151,39): warning C4244: '+=': conversion from 'double' to 'T', possible loss of data
+D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Game.cpp(151,39): warning C4244:         with
+D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Game.cpp(151,39): warning C4244:         [
+D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Game.cpp(151,39): warning C4244:             T=float
+D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Game.cpp(151,39): warning C4244:         ]
+D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Game.cpp(152,39): warning C4244: '+=': conversion from 'double' to 'T', possible loss of data
+D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Game.cpp(152,39): warning C4244:         with
+D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Game.cpp(152,39): warning C4244:         [
+D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Game.cpp(152,39): warning C4244:             T=float
+D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Game.cpp(152,39): warning C4244:         ]
+  Main.cpp
+  Generating Code...
   2DGameEngine.vcxproj -> D:\Development\MyRepository\2DGameEngine\2DGameEngine\Debug\2DGameEngine.exe

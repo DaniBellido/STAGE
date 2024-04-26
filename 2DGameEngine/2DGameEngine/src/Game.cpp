@@ -120,14 +120,37 @@ void Game::ProcessInput()
 	}
 }
 
+glm::vec2 playerPosition;
+glm::vec2 playerVelocity;
+
 void Game::Setup() 
 {
 	//TODO: Init game objects
+	playerPosition = glm::vec2(10.0, 420.0);
+	playerVelocity = glm::vec2(100.0, 0.0);
 }
 
 void Game::Update() 
 {
-	// TODO: Update Game Objects
+	// If it's too fast, waste some time until we reach the MILLISECS_PER_FRAME constant
+	int timeToWait = MILLISECS_PER_FRAME - (SDL_GetTicks() - millisecsPreviousFrame);
+
+	if (timeToWait > 0 && timeToWait <= MILLISECS_PER_FRAME) 
+	{
+		SDL_Delay(timeToWait);
+	}
+	
+	// The diference in ticks since the last frame, converted to seconds
+	double deltaTime = (SDL_GetTicks() - millisecsPreviousFrame) / 1000.0;
+
+	// Store the current frame time
+	millisecsPreviousFrame = SDL_GetTicks();
+
+
+	// Update Game Objects
+	playerPosition.x += playerVelocity.x * deltaTime;
+	playerPosition.y += playerVelocity.y * deltaTime;
+
 }
 
 void Game::Render() 
@@ -140,16 +163,19 @@ void Game::Render()
 	// #################### Render all game objects here ####################
 
 
-	// SAMPLE: Draw a rectangle
-	SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);  // <- Pick a new color
-	SDL_Rect player = { 10,10,20,20 };                     // <- Create a rectangle {x, y, w, h}
-	SDL_RenderFillRect(renderer, &player);                 // <- Draw a rectangle on top of renderer with the last color selected
+	// Tank Sprite = SDLTexture + SDLRect
+	SDL_Texture* texture = IMG_LoadTexture(renderer,"./assets/images/tank-tiger-right.png"); // Create a texture 
+	SDL_Rect dstRect = {                                       // Creates a rectangle where to place the texture
+		static_cast<int>(playerPosition.x),
+		static_cast<int>(playerPosition.y),
+		32,32 };           
+	SDL_RenderCopy(renderer, texture, NULL, &dstRect);         // Render a FULL copy of the texture on the rectangle
+	SDL_DestroyTexture(texture);                               // Texture is no longer needed
+
 
 
 	// ######################################################################
 	
-
-
 	// Double-Buffered Render: Draw and display on screen all objects previously called swapping buffers in each frame
 	SDL_RenderPresent(renderer); 
 }

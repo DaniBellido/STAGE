@@ -1,5 +1,5 @@
-D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Logger.cpp;D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\Debug\Logger.obj
-D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Game.cpp;D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\Debug\Game.obj
+D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Logger\Logger.cpp;D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\Debug\Logger.obj
+D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Game\Game.cpp;D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\Debug\Game.obj
 D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\libs\glm\detail\glm.cpp;D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\Debug\glm.obj
 D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\libs\imgui\imgui.cpp;D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\Debug\imgui.obj
 D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\libs\imgui\imgui_demo.cpp;D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\Debug\imgui_demo.obj

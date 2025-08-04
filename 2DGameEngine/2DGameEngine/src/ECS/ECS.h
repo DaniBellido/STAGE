@@ -1,5 +1,18 @@
 #pragma once
+#include <bitset>
+#include <vector>
 
+
+const unsigned int MAX_COMPONENTS = 32;
+
+
+////////////////////////////////////////////////////////////////////////////////
+// Signature
+////////////////////////////////////////////////////////////////////////////////
+// We use a bitset (0's and 1's) tokeep track of which components and entity has
+// and also helps to keep track of which entities a system is interested in
+////////////////////////////////////////////////////////////////////////////////
+typedef std::bitset<MAX_COMPONENTS> Signature;
 
 class Component 
 {
@@ -25,6 +38,18 @@ public:
 
 class System 
 {
+private:
+	Signature componentsSignature;
+	std::vector<Entity> entities;
+public:
+	System() = default;
+	~System() = default;
+
+	void AddEntityToSystem(Entity entity);
+	void RemoveEntityFromSystem(Entity entity);
+	std::vector<Entity> GetSystemEntities() const;
+	Signature& GetComponentSignature() const;
+
 
 };
 

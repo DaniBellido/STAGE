@@ -1,0 +1,34 @@
+#pragma once
+
+
+class Component 
+{
+
+};
+
+class Entity 
+{
+private:
+	int id;
+
+public:
+	Entity(int id) : id(id) {}; //constructor that initialise id
+	int GetId() const;
+
+};
+
+////////////////////////////////////////////////////////////////////
+// System
+////////////////////////////////////////////////////////////////////
+// The System processes entities that contain a specific signature
+////////////////////////////////////////////////////////////////////
+
+class System 
+{
+
+};
+
+class Registry 
+{
+
+};

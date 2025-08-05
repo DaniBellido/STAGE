@@ -41,7 +41,15 @@ private:
 
 public:
 	Entity(int id) : id(id) {}; //constructor that initialise id
+	Entity(const Entity& entity) = default;
 	int GetId() const;
+
+	// Operator overloading
+	Entity& operator = (const Entity& other) = default;
+	bool operator == (const Entity& other) const { return id == other.id; }
+	bool operator != (const Entity& other) const { return id != other.id; }
+	bool operator > (const Entity& other) const { return id > other.id; }
+	bool operator < (const Entity& other) const { return id < other.id; }
 
 };
 
@@ -63,7 +71,7 @@ public:
 	void AddEntityToSystem(Entity entity);
 	void RemoveEntityFromSystem(Entity entity);
 	std::vector<Entity> GetSystemEntities() const;
-	Signature& GetComponentSignature() const;
+	const Signature& GetComponentSignature() const;
 
 	//Defines the component type that entities must have to be considered by the system
 	template <typename TComponent> void RequireComponent();
@@ -78,5 +86,5 @@ template <typename TComponent>
 void System::RequireComponent() 
 {
 	const auto componentID = Component<TComponent>::GetId();
-	//componentSignature.set(componentId);
+	componentsSignature.set(componentID);
 }

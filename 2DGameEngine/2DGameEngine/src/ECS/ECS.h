@@ -1,6 +1,10 @@
 #pragma once
 #include <bitset>
 #include <vector>
+#include <unordered_map>
+#include <typeindex>
+#include <set>
+
 
 
 const unsigned int MAX_COMPONENTS = 32;
@@ -157,11 +161,34 @@ class Registry
 {
 private:
 	int numEntities = 0;
+	//Set of entities that are flagged to be added or removed in the next registry Update()
+	std::set<Entity> entitiesToBeAdded;
+	std::set<Entity> entitiesToKilled;
 
 	// Vector of component pools, each pool contains all the data for a certain component type
 	// Vector index = component type id (Transform, Sprite, Collider, etc)
 	// Pool index = entity id
 	std::vector<IPool*> componentPools;
+
+	// Vector of components signature per entity, saying which component is turned "on" for a given entity
+	// Vecotr index = entity id
+	std::vector<Signature> entityComponentSignatures;
+
+	std::unordered_map<std::type_index, System*> systems;
+
+public:
+	Registry() = default;
+
+	void Update();
+
+	Entity CreateEntity();
+
+	//TODO: AddComponent<T>(...);
+
+	void AddEntityToSystem(Entity entity);
+	
+
+
 };
 
 template <typename TComponent>

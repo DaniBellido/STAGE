@@ -163,7 +163,7 @@ private:
 	int numEntities = 0;
 	//Set of entities that are flagged to be added or removed in the next registry Update()
 	std::set<Entity> entitiesToBeAdded;
-	std::set<Entity> entitiesToKilled;
+	std::set<Entity> entitiesToBeKilled;
 
 	// Vector of component pools, each pool contains all the data for a certain component type
 	// Vector index = component type id (Transform, Sprite, Collider, etc)
@@ -181,9 +181,11 @@ public:
 
 	void Update();
 
+	// Entity management
 	Entity CreateEntity();
 
-	//TODO: AddComponent<T>(...);
+	// Component management
+	template <typename TComponent, typename ...TArgs> void AddComponent(Entity entity, TArgs&&...args);
 
 	void AddEntityToSystem(Entity entity);
 	
@@ -196,4 +198,36 @@ void System::RequireComponent()
 {
 	const auto componentID = Component<TComponent>::GetId();
 	componentsSignature.set(componentID);
+}
+
+template <typename TComponent, typename ...TArgs>
+void Registry::AddComponent(Entity entity, TArgs&& ...args) 
+{
+	const auto componentId = Component<TComponent>::GetId();
+	const auto entityId = entity.GetId();
+
+	if (componentId >= componentPools.size()) 
+	{
+		componentPools.resize(componentId + 1, nullptr);
+	}
+
+	if (!componentPools[componentId]) 
+	{
+		Pool<TComponent>* newComponentPool = new Pool<TComponent>();
+		componentPools[componentId] = newComponentPool;
+	}
+
+	Pool<TComponent>* componentPool = componentPools[componentId];
+
+	if (entityId >= componentPool->GetSize()) 
+	{
+		componentPool->Resize(numEntities);
+	}
+
+	TComponent newComponent(std::forward<TArgs>(args)...);
+
+	componentPool->Set(entityId, newComponent);
+
+	entityComponentSignatures[entityId].set(componentId);
+
 }

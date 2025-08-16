@@ -4,6 +4,7 @@
 #include <unordered_map>
 #include <typeindex>
 #include <set>
+#include <memory> 
 
 
 
@@ -161,10 +162,7 @@ class Registry
 {
 private:
 	int numEntities = 0;
-	//Set of entities that are flagged to be added or removed in the next registry Update()
-	std::set<Entity> entitiesToBeAdded;
-	std::set<Entity> entitiesToBeKilled;
-
+	
 	// Vector of component pools, each pool contains all the data for a certain component type
 	// Vector index = component type id (Transform, Sprite, Collider, etc)
 	// Pool index = entity id
@@ -174,7 +172,13 @@ private:
 	// Vecotr index = entity id
 	std::vector<Signature> entityComponentSignatures;
 
+	// Map of active systems
+	// [Map key = system type id]
 	std::unordered_map<std::type_index, System*> systems;
+
+	//Set of entities that are flagged to be added or removed in the next registry Update()
+	std::set<Entity> entitiesToBeAdded;
+	std::set<Entity> entitiesToBeKilled;
 
 public:
 	Registry() = default;
@@ -186,11 +190,18 @@ public:
 
 	// Component management
 	template <typename TComponent, typename ...TArgs> void AddComponent(Entity entity, TArgs&&...args);
+	template <typename TComponent> void RemoveComponent(Entity entity);
+	template <typename TComponent> bool HasComponent(Entity entity) const;
 
+	// System management
+	template <typename TSystem, typename ...TArgs> void AddSystem(TArgs&& ...args);
+	template <typename TSystem> void RemoveSystem();
+	template <typename TSystem> bool HasSystem() const;
+	template <typename TSystem> TSystem& GetSystem() const;
+
+	// Check the component signature of an entity and add the entity to the systems
+	// that are interested
 	void AddEntityToSystem(Entity entity);
-	
-
-
 };
 
 template <typename TComponent>
@@ -199,6 +210,36 @@ void System::RequireComponent()
 	const auto componentID = Component<TComponent>::GetId();
 	componentsSignature.set(componentID);
 }
+
+template <typename TSystem, typename ...TArgs> 
+void Registry::AddSystem(TArgs&& ...args) 
+{
+	TSystem* newSystem(new TSystem(std::forward<TArgs>(args)...));
+	systems.insert(std::make_pair(std::type_index(typeid(TSystem)), newSystem));
+
+}
+
+template <typename TSystem> 
+void Registry::RemoveSystem() 
+{
+	auto system = systems.find(std::type_index(typeid(TSystem)));
+	systems.erase(system);
+}
+
+template <typename TSystem> 
+bool Registry::HasSystem() const 
+{
+	return systems.find(std::type_index(typeid(TSystem))) != systems.end();
+}
+
+template <typename TSystem> 
+TSystem& Registry::GetSystem() const 
+{
+	auto system = systems.find(std::type_index(typeid(TSystem)));
+	return *(std::static_pointer_cast<TSystem>(system->second));
+}
+
+
 
 template <typename TComponent, typename ...TArgs>
 void Registry::AddComponent(Entity entity, TArgs&& ...args) 
@@ -230,4 +271,20 @@ void Registry::AddComponent(Entity entity, TArgs&& ...args)
 
 	entityComponentSignatures[entityId].set(componentId);
 
+}
+
+template <typename TComponent>
+void Registry::RemoveComponent(Entity entity) 
+{
+	const auto componentId = Component<TComponent>::GetId();
+	const auto entityId = entity.GetId();
+	entityComponentSignatures[entityId].set(componentId, false);
+}
+
+template <typename TComponent>
+bool Registry::HasComponent(Entity entity) const
+{
+	const auto componentId = Component<TComponent>::GetId();
+	const auto entityId = entity.GetId();
+	 return entityComponentSignatures[entityId].test(componentId);
 }

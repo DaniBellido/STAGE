@@ -4,7 +4,8 @@
 #include <unordered_map>
 #include <typeindex>
 #include <set>
-#include <memory> 
+#include <memory>
+#include "../Logger/Logger.h"
 
 
 
@@ -166,7 +167,7 @@ private:
 	// Vector of component pools, each pool contains all the data for a certain component type
 	// Vector index = component type id (Transform, Sprite, Collider, etc)
 	// Pool index = entity id
-	std::vector<IPool*> componentPools;
+	std::vector<std::shared_ptr<IPool>> componentPools;
 
 	// Vector of components signature per entity, saying which component is turned "on" for a given entity
 	// Vecotr index = entity id
@@ -174,14 +175,22 @@ private:
 
 	// Map of active systems
 	// [Map key = system type id]
-	std::unordered_map<std::type_index, System*> systems;
+	std::unordered_map<std::type_index, std::shared_ptr<System>> systems;
 
 	//Set of entities that are flagged to be added or removed in the next registry Update()
 	std::set<Entity> entitiesToBeAdded;
 	std::set<Entity> entitiesToBeKilled;
 
 public:
-	Registry() = default;
+	Registry() 
+	{
+		Logger::Log("Registry constructor called. ");
+	}
+
+	~Registry()
+	{
+		Logger::Log("Registry destructor called. ");
+	}
 
 	void Update();
 
@@ -214,7 +223,7 @@ void System::RequireComponent()
 template <typename TSystem, typename ...TArgs> 
 void Registry::AddSystem(TArgs&& ...args) 
 {
-	TSystem* newSystem(new TSystem(std::forward<TArgs>(args)...));
+	std::shared_ptr<TSystem> newSystem = std::make_shared<TSystem>(std::forward<TArgs>(args)...);
 	systems.insert(std::make_pair(std::type_index(typeid(TSystem)), newSystem));
 
 }
@@ -254,11 +263,11 @@ void Registry::AddComponent(Entity entity, TArgs&& ...args)
 
 	if (!componentPools[componentId]) 
 	{
-		Pool<TComponent>* newComponentPool = new Pool<TComponent>();
+		std::shared_ptr<Pool<TComponent>> newComponentPool = std::make_shared<Pool<TComponent>>();
 		componentPools[componentId] = newComponentPool;
 	}
 
-	Pool<TComponent>* componentPool = componentPools[componentId];
+	std::shared_ptr<Pool<TComponent>> componentPool = std::static_pointer_cast<Pool<TComponent>>(componentPools[componentId]);
 
 	if (entityId >= componentPool->GetSize()) 
 	{

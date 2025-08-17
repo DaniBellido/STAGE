@@ -1,5 +1,6 @@
 ﻿  ECS.cpp
-D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\ECS\ECS.cpp(51,15): warning C4018: '>=': signed/unsigned mismatch
   Game.cpp
+D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\ECS\ECS.cpp(51,15): warning C4018: '>=': signed/unsigned mismatch
+  Main.cpp
   Generating Code...
   2DGameEngine.vcxproj -> D:\Development\MyRepository\2DGameEngine\2DGameEngine\Debug\2DGameEngine.exe

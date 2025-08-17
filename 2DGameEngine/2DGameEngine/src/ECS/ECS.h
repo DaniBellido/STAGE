@@ -31,6 +31,8 @@ protected:
 template <typename T>
 class Component: public IComponent 
 {
+public:
+
 	// Returns the unique id of Component<T>
 	static int GetId() 
 	{
@@ -279,6 +281,8 @@ void Registry::AddComponent(Entity entity, TArgs&& ...args)
 	componentPool->Set(entityId, newComponent);
 
 	entityComponentSignatures[entityId].set(componentId);
+
+	Logger::Log("Component id = " + std::to_string(componentId) + " was added to entity id " + std::to_string(entityId));
 
 }
 

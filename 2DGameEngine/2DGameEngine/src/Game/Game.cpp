@@ -11,7 +11,9 @@
 #include "../ECS/ECS.h"
 #include "../Components/TransformComponent.h"
 #include "../Components/RigidBodyComponent.h"
+#include "../Components/SpriteComponent.h"
 #include "../Systems/MovementSystem.h"
+#include "../Systems/RenderSystem.h"
 
 
 Game::Game() 
@@ -135,6 +137,7 @@ void Game::Setup()
 	
 	// Add the systems that need to be processed in our game
 	registry->AddSystem<MovementSystem>();
+	registry->AddSystem<RenderSystem>();
 	
 	// Create an entity
 	Entity tank = registry->CreateEntity();
@@ -142,6 +145,14 @@ void Game::Setup()
 	// Add components
 	tank.AddComponent<TransformComponent>(glm::vec2(10.0, 30.0), glm::vec2(1.0, 1.0), 0.0);
 	tank.AddComponent<RigidBodyComponent>(glm::vec2(50.0, 10.0));
+	tank.AddComponent<SpriteComponent>(10, 10);
+
+	Entity truck = registry->CreateEntity();
+
+	// Add components
+	truck.AddComponent<TransformComponent>(glm::vec2(1000.0, 300.0), glm::vec2(1.0, 1.0), 0.0);
+	truck.AddComponent<RigidBodyComponent>(glm::vec2(-80.0, -10.0));
+	truck.AddComponent<SpriteComponent>(200, 20);
 
 	// Remove Component from the entity
 	//tank.RemoveComponent<TransformComponent>();
@@ -177,7 +188,7 @@ void Game::Update()
 	millisecsPreviousFrame = SDL_GetTicks();
 
 
-	//Ask all the systems to update
+	// Invoke all the systems that need to update
 	registry->GetSystem<MovementSystem>().Update(deltaTime);
 
 	// Update the registry to process the entities that are waiting to be created/deleted
@@ -192,14 +203,8 @@ void Game::Render()
 	// Clear renderer with the selected color
 	SDL_RenderClear(renderer);
 
-	// #################### Render all game objects here ####################
-
-
-	// TODO: Render game objects...
-
-
-
-	// ######################################################################
+	// Invoke all the systems that need to render
+	registry->GetSystem<RenderSystem>().Update(renderer);
 	
 	// Double-Buffered Render: Draw and display on screen all objects previously called swapping buffers in each frame
 	SDL_RenderPresent(renderer); 

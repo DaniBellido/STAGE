@@ -141,8 +141,8 @@ void Game::Setup()
 	registry->AddSystem<RenderSystem>();
 	
 	// Adding assets to the asset store
-	assetStore->AddTexture(renderer, "tank-image", ".assets/images/tank-panther-right.png");
-	assetStore->AddTexture(renderer, "truck-image", ".assets/images/truck-ford-right.png");
+	assetStore->AddTexture(renderer, "tank-image", "./assets/images/tank-panther-right.png");
+	assetStore->AddTexture(renderer, "truck-image", "./assets/images/truck-ford-right.png"); 
 
 	// Create an entity
 	Entity tank = registry->CreateEntity();
@@ -150,27 +150,17 @@ void Game::Setup()
 	// Add components
 	tank.AddComponent<TransformComponent>(glm::vec2(10.0, 30.0), glm::vec2(1.0, 1.0), 0.0);
 	tank.AddComponent<RigidBodyComponent>(glm::vec2(50.0, 10.0));
-	tank.AddComponent<SpriteComponent>("tank-image", 10, 10);
+	tank.AddComponent<SpriteComponent>("tank-image", 32, 32);
 
 	Entity truck = registry->CreateEntity();
 
 	// Add components
 	truck.AddComponent<TransformComponent>(glm::vec2(1000.0, 300.0), glm::vec2(1.0, 1.0), 0.0);
 	truck.AddComponent<RigidBodyComponent>(glm::vec2(-80.0, -10.0));
-	truck.AddComponent<SpriteComponent>("truck-image", 200, 20);
+	truck.AddComponent<SpriteComponent>("truck-image", 32, 32);
 
 	// Remove Component from the entity
-	//tank.RemoveComponent<TransformComponent>();
-	
 
-
-	//registry->AddComponent<struct TransformComponent>(tank, glm::vec2(10.0, 30.0), glm::vec2(1.0, 1.0), 0.0);
-	//registry->AddComponent<struct RigidBodyComponent>(tank, glm::vec2(50.0, 30.0));
-
-	// Entity tank = regisry.CreateEntity();
-	// tank.AddComponent<TransformComponent>();
-	// tank.AddComponent<BoxColliderComponent>();
-	// tank.AddComponent<SpriteComponent>("./assets/images/tank.png");
 	
 }
 
@@ -209,7 +199,7 @@ void Game::Render()
 	SDL_RenderClear(renderer);
 
 	// Invoke all the systems that need to render
-	registry->GetSystem<RenderSystem>().Update(renderer);
+	registry->GetSystem<RenderSystem>().Update(renderer, assetStore);
 	
 	// Double-Buffered Render: Draw and display on screen all objects previously called swapping buffers in each frame
 	SDL_RenderPresent(renderer); 

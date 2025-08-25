@@ -13,8 +13,10 @@
 #include "../Components/TransformComponent.h"
 #include "../Components/RigidBodyComponent.h"
 #include "../Components/SpriteComponent.h"
+#include "../Components/AnimationComponent.h"
 #include "../Systems/MovementSystem.h"
 #include "../Systems/RenderSystem.h"
+#include "../Systems/AnimationSystem.h"
 
 
 Game::Game() 
@@ -137,11 +139,14 @@ void Game::LoadLevel(int level)
 	// Add the systems that need to be processed in our game
 	registry->AddSystem<MovementSystem>();
 	registry->AddSystem<RenderSystem>();
+	registry->AddSystem<AnimationSystem>();
 
 	// Adding assets to the asset store
 	assetStore->AddTexture(renderer, "tank-image", "./assets/images/tank-panther-right.png");
 	assetStore->AddTexture(renderer, "truck-image", "./assets/images/truck-ford-right.png");
 	assetStore->AddTexture(renderer, "tilemap-image", "./assets/tilemaps/jungle.png");
+	assetStore->AddTexture(renderer, "chopper-image", "./assets/images/chopper.png");
+	assetStore->AddTexture(renderer, "radar-image", "./assets/images/radar.png");
 
 	// Load the tilemap
 	int tileSize = 32;
@@ -172,18 +177,26 @@ void Game::LoadLevel(int level)
 	mapFile.close();
 
 
-	// Create an entity
-	Entity tank = registry->CreateEntity();
+	// Create an entities and add components to the entity
+	Entity chopper = registry->CreateEntity();
+	chopper.AddComponent<TransformComponent>(glm::vec2(100.0, 100.0), glm::vec2(1.0, 1.0), 0.0);
+	chopper.AddComponent<RigidBodyComponent>(glm::vec2(0.0, 0.0));
+	chopper.AddComponent<SpriteComponent>("chopper-image", 32, 32, 1);
+	chopper.AddComponent<AnimationComponent>(2, 10, true);
 
-	// Add components
+	Entity radar = registry->CreateEntity();
+	radar.AddComponent<TransformComponent>(glm::vec2(windowWidth - 74, 10.0), glm::vec2(1.0, 1.0), 0.0);
+	radar.AddComponent<RigidBodyComponent>(glm::vec2(0.0, 0.0));
+	radar.AddComponent<SpriteComponent>("radar-image", 64, 64, 2);
+	radar.AddComponent<AnimationComponent>(8, 5, true);
+
+	Entity tank = registry->CreateEntity();
 	tank.AddComponent<TransformComponent>(glm::vec2(10.0, 10.0), glm::vec2(1.0, 1.0), 0.0);
 	tank.AddComponent<RigidBodyComponent>(glm::vec2(50.0, 10.0));
 	tank.AddComponent<SpriteComponent>("tank-image", 32, 32, 1);
 
 	Entity truck = registry->CreateEntity();
-
-	// Add components
-	truck.AddComponent<TransformComponent>(glm::vec2(10.0, 10.0), glm::vec2(1.0, 1.0), 0.0);
+	truck.AddComponent<TransformComponent>(glm::vec2(10.0, 50.0), glm::vec2(1.0, 1.0), 0.0);
 	truck.AddComponent<RigidBodyComponent>(glm::vec2(50.0, 10.0));
 	truck.AddComponent<SpriteComponent>("truck-image", 32, 32, 2);
 
@@ -217,6 +230,7 @@ void Game::Update()
 
 	// Invoke all the systems that need to update
 	registry->GetSystem<MovementSystem>().Update(deltaTime);
+	registry->GetSystem<AnimationSystem>().Update();
 
 	// Update the registry to process the entities that are waiting to be created/deleted
 	registry->Update();

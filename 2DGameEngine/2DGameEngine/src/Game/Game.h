@@ -11,6 +11,7 @@ class Game
 private:
 	// Global private variables (Attributes) to use in different member functions
 	bool isRunning;
+	bool isDebug;
 	int millisecsPreviousFrame = 0;
 	SDL_Window* window;
 	SDL_Renderer* renderer;

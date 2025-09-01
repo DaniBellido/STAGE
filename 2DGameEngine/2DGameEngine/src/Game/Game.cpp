@@ -212,6 +212,8 @@ void Game::LoadLevel(int level)
 	truck.AddComponent<SpriteComponent>("truck-image", 32, 32, 2);
 	truck.AddComponent<BoxColliderComponent>(32, 32);
 
+	
+
 
 }
 

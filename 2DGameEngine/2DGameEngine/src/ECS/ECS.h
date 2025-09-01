@@ -1,6 +1,7 @@
 #pragma once
 #include <bitset>
 #include <vector>
+#include <deque>
 #include <unordered_map>
 #include <typeindex>
 #include <set>
@@ -50,6 +51,7 @@ private:
 public:
 	Entity(int id) : id(id) {}; //constructor that initialise id
 	Entity(const Entity& entity) = default;
+	void Kill();
 	int GetId() const;
 
 	// Operator overloading
@@ -190,6 +192,9 @@ private:
 	std::set<Entity> entitiesToBeAdded;
 	std::set<Entity> entitiesToBeKilled;
 
+	// List of free entity ids that were previosuly removed
+	std::deque<int> freeIds;
+
 public:
 	Registry() 
 	{
@@ -205,6 +210,7 @@ public:
 
 	// Entity management
 	Entity CreateEntity();
+	void KillEntity(Entity entity);
 
 	// Component management
 	template <typename TComponent, typename ...TArgs> void AddComponent(Entity entity, TArgs&&...args);
@@ -218,9 +224,9 @@ public:
 	template <typename TSystem> bool HasSystem() const;
 	template <typename TSystem> TSystem& GetSystem() const;
 
-	// Check the component signature of an entity and add the entity to the systems
-	// that are interested
-	void AddEntityToSystem(Entity entity);
+	// Add and remove entities from their systems
+	void AddEntityToSystems(Entity entity);
+	void RemoveEntityFromSystems(Entity entity);
 };
 
 template <typename TComponent>

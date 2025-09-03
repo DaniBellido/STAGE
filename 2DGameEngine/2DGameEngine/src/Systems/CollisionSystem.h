@@ -1,6 +1,8 @@
 #pragma once
 
 #include "../ECS/ECS.h"
+#include "../EventBus/EventBus.h"
+#include "../Events/CollisionEvent.h"
 #include "../Components/TransformComponent.h"
 #include "../Components/BoxColliderComponent.h"
 
@@ -14,7 +16,7 @@ public:
 		RequireComponent<BoxColliderComponent>();
 	}
 
-	void Update() 
+	void Update(std::unique_ptr<EventBus>& eventBus) 
 	{
 		// AABB Colision check
 
@@ -57,6 +59,7 @@ public:
 					Logger::Log("Entity " + std::to_string(a.GetId()) + " is colliding with entity " + std::to_string(b.GetId()));
 
 					// TODO: emit an event...
+					eventBus->EmitEvent<CollisionEvent>(a, b);
 				}
 			}
 		}

@@ -39,13 +39,13 @@ private:
 
 public:
 
-	EventCallback(TOwner ownerInstance, CallbackFunction callbackfunction) 
+	EventCallback(TOwner* ownerInstance, CallbackFunction callbackfunction) 
 	{
 		this->ownerInstance = ownerInstance;
 		this->callbackFunction = callbackfunction;
 	}
 
-	virtual ~IEventCallback() override = default;
+	virtual ~EventCallback() override = default;
 
 
 };
@@ -66,6 +66,12 @@ public:
 	~EventBus()
 	{
 		Logger::Log("EventBus destructor called! ");
+	}
+
+	// Clears the subscriber list
+	void Reset() 
+	{
+		subscribers.clear();
 	}
 
 	///////////////////////////////////////////////////
@@ -105,4 +111,6 @@ public:
 			}
 		}
 	}
+
+
 };

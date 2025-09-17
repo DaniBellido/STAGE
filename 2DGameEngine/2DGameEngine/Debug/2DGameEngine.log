@@ -1,6 +1,4 @@
-﻿  ECS.cpp
-  Game.cpp
-D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\ECS\ECS.cpp(74,16): warning C4018: '>=': signed/unsigned mismatch
+﻿  Game.cpp
 D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Systems\MovementSystem.h(29,49): warning C4244: '+=': conversion from 'double' to 'T', possible loss of data
 D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Systems\MovementSystem.h(29,49): warning C4244:         with
 D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Systems\MovementSystem.h(29,49): warning C4244:         [
@@ -29,7 +27,7 @@ D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Systems\C
 D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Systems\CameraMovementSystem.h(28,37): warning C4244:         ]
   (compiling source file 'src/Game/Game.cpp')
   
-D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Systems\ProjectileEmitSystem.h(87,60): warning C4018: '>': signed/unsigned mismatch
+D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Systems\ProjectileEmitSystem.h(88,60): warning C4018: '>': signed/unsigned mismatch
   (compiling source file 'src/Game/Game.cpp')
   
 D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Systems\ProjectileLifecycleSystem.h(21,46): warning C4018: '>': signed/unsigned mismatch
@@ -41,7 +39,7 @@ D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\ECS\ECS.h
   (compiling source file 'src/Game/Game.cpp')
   D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\ECS\ECS.h(303,18):
   the template instantiation context (the oldest one first) is
-  	D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Systems\ProjectileEmitSystem.h(64,16):
+  	D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Systems\ProjectileEmitSystem.h(65,16):
   	see reference to function template instantiation 'void Entity::AddComponent<TransformComponent,glm::vec2&,glm::vec2,double>(glm::vec2 &,glm::vec2 &&,double &&)' being compiled
   	D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\ECS\ECS.h(365,10):
   	see reference to function template instantiation 'void Registry::AddComponent<TransformComponent,glm::vec2&,_Ty,double>(Entity,glm::vec2 &,_Ty &&,double &&)' being compiled
@@ -50,6 +48,4 @@ D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\ECS\ECS.h
               _Ty=glm::vec2
           ]
   
-  Main.cpp
-  Generating Code...
   2DGameEngine.vcxproj -> D:\Development\MyRepository\2DGameEngine\2DGameEngine\Debug\2DGameEngine.exe

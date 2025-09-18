@@ -1313,4 +1313,8 @@
   <ItemGroup>
     <Library Include="libs\lua\liblua53.a" />
   </ItemGroup>
+  <ItemGroup>
+    <Font Include="assets\fonts\arial.ttf" />
+    <Font Include="assets\fonts\charriot.ttf" />
+  </ItemGroup>
 </Project>

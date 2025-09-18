@@ -190,6 +190,7 @@ void Game::LoadLevel(int level)
 	assetStore->AddTexture(renderer, "chopper-image", "./assets/images/chopper-spritesheet.png");
 	assetStore->AddTexture(renderer, "radar-image", "./assets/images/radar.png");
 	assetStore->AddTexture(renderer, "bullet-image", "./assets/images/bullet.png");
+	assetStore->AddFont("charriot-font", "./assets/fonts/charriot.ttf", 20);
 
 	// Load the tilemap
 	int tileSize = 32;
@@ -262,7 +263,8 @@ void Game::LoadLevel(int level)
 	truck.AddComponent<ProjectileEmitterComponent>(glm::vec2(0.0, 40.0), 2000, 2000, 10, false);
 	truck.AddComponent<HealthComponent>(100);
 
-	
+	Entity label = registry->CreateEntity();
+	//label.AddComponent<TextLabelComponent>();
 
 
 }

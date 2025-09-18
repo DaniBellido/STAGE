@@ -1,5 +1,4 @@
-﻿  ECS.cpp
-D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\ECS\ECS.cpp(74,16): warning C4018: '>=': signed/unsigned mismatch
+﻿  AssetStore.cpp
   Game.cpp
 D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Systems\MovementSystem.h(29,49): warning C4244: '+=': conversion from 'double' to 'T', possible loss of data
 D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Systems\MovementSystem.h(29,49): warning C4244:         with
@@ -35,8 +34,8 @@ D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Systems\P
 D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Systems\ProjectileLifecycleSystem.h(21,46): warning C4018: '>': signed/unsigned mismatch
   (compiling source file 'src/Game/Game.cpp')
   
-D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Game\Game.cpp(222,35): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Game\Game.cpp(223,36): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Game\Game.cpp(223,35): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Game\Game.cpp(224,36): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
 D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\ECS\ECS.h(360,18): warning C4018: '>=': signed/unsigned mismatch
   (compiling source file 'src/Game/Game.cpp')
   D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\ECS\ECS.h(360,18):

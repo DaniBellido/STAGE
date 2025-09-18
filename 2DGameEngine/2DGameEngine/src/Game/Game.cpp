@@ -23,6 +23,7 @@
 #include "../Components/CameraFollowComponent.h"
 #include "../Components/ProjectileEmitterComponent.h"
 #include "../Components/HealthComponent.h"
+#include "../Components/TextLabelComponent.h"
 
 // Systems
 #include "../Systems/MovementSystem.h"
@@ -35,6 +36,7 @@
 #include "../Systems/KeyboardControlSystem.h"
 #include "../Systems/ProjectileEmitSystem.h"
 #include "../Systems/ProjectileLifecycleSystem.h"
+#include "../Systems/RenderTextSystem.h"
 
 int Game::windowWidth;
 int Game::windwHeight;
@@ -66,6 +68,11 @@ void Game::Initialize()
 		return;
 	}
 
+	if (TTF_Init() != 0) 
+	{
+		Logger::Err("Error initializing SDL TTF.");
+		return;
+	}
 	
 	// SDL struct to store display mode information
 	SDL_DisplayMode displayMode;
@@ -182,6 +189,7 @@ void Game::LoadLevel(int level)
 	registry->AddSystem<CameraMovementSystem>();
 	registry->AddSystem<ProjectileEmitSystem>();
 	registry->AddSystem<ProjectileLifecicleSystem>();
+	registry->AddSystem<RenderTextSystem>();
 
 	// Adding assets to the asset store
 	assetStore->AddTexture(renderer, "tank-image", "./assets/images/tank-panther-right.png");
@@ -264,8 +272,8 @@ void Game::LoadLevel(int level)
 	truck.AddComponent<HealthComponent>(100);
 
 	Entity label = registry->CreateEntity();
-	//label.AddComponent<TextLabelComponent>();
-
+	SDL_Color green = { 0, 255, 0 };
+	label.AddComponent<TextLabelComponent>(glm::vec2(windowWidth / 2 - 40, 10), "STAGE 1.0", "charriot-font", green, true);
 
 }
 
@@ -311,6 +319,7 @@ void Game::Update()
 	registry->GetSystem<ProjectileEmitSystem>().Update(registry);
 	registry->GetSystem<CameraMovementSystem>().Update(camera);
 	registry->GetSystem<ProjectileLifecicleSystem>().Update();
+	
 
 }
 
@@ -323,6 +332,7 @@ void Game::Render()
 
 	// Invoke all the systems that need to render
 	registry->GetSystem<RenderSystem>().Update(renderer, assetStore, camera);
+	registry->GetSystem<RenderTextSystem>().Update(assetStore, renderer, camera);
 
 	if (isDebug) 
 	{

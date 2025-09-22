@@ -39,6 +39,8 @@ public:
 
 			SDL_RenderCopy(renderer, texture, NULL, &desRect);
 
+			SDL_DestroyTexture(texture);
+
 		}
 	}
 

@@ -5,6 +5,8 @@
 #include <SDL_mixer.h>
 #include <glm/glm.hpp>
 #include <imgui/imgui.h>
+#include <imgui/imgui_impl_sdlrenderer2.h>
+#include <imgui/imgui_impl_sdl2.h>
 #include <sol/sol.hpp>
 #include <iostream>
 #include <fstream>
@@ -119,6 +121,21 @@ void Game::Initialize()
 	//Sets real full screen resolution
 	SDL_SetWindowFullscreen(window, SDL_WINDOW_FULLSCREEN);
 
+	// Initialise the ImGui context
+	IMGUI_CHECKVERSION();
+	ImGui::CreateContext();
+	ImGuiIO& io = ImGui::GetIO(); (void)io;
+	io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     // Enable Keyboard Controls
+	io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;      // Enable Gamepad Controls
+
+	// Setup Dear ImGui style
+	ImGui::StyleColorsDark();
+	//ImGui::StyleColorsLight();
+
+	// Setup renderer backends
+	ImGui_ImplSDL2_InitForSDLRenderer(window, renderer);
+	ImGui_ImplSDLRenderer2_Init(renderer);
+
 	// Initialize the camera view with the entire screen area
 	camera.x = 0;
 	camera.y = 0;
@@ -152,6 +169,16 @@ void Game::ProcessInput()
 
 	while (SDL_PollEvent(&sdlEvent))   // Passed as a reference to provide the memory address and not the whole struct
 	{
+		// ImGui SDL input
+		ImGui_ImplSDL2_ProcessEvent(&sdlEvent);
+		ImGuiIO& io = ImGui::GetIO();
+		int mouseX, mouseY;
+		const int buttons = SDL_GetMouseState(&mouseX, &mouseY);
+		io.MousePos = ImVec2(mouseX, mouseY);
+		io.MouseDown[0] = buttons & SDL_BUTTON(SDL_BUTTON_LEFT);
+		io.MouseDown[1] = buttons & SDL_BUTTON(SDL_BUTTON_RIGHT);
+
+		// Handle core SDL events (close window, key pressed, etc.)
 		switch (sdlEvent.type) 
 		{
 			case SDL_QUIT:
@@ -342,6 +369,16 @@ void Game::Render()
 	if (isDebug) 
 	{
 		registry->GetSystem<RenderColliderSystem>().Update(renderer, camera);
+
+		// ImGui only visible in debug mode
+		 // Start the Dear ImGui frame
+		ImGui_ImplSDLRenderer2_NewFrame();
+		ImGui_ImplSDL2_NewFrame();
+		ImGui::NewFrame();
+		ImGui::ShowDemoWindow();
+		ImGui::Render();
+		ImGui_ImplSDLRenderer2_RenderDrawData(ImGui::GetDrawData(), renderer);
+
 	}
 	// Double-Buffered Render: Draw and display on screen all objects previously called swapping buffers in each frame
 	SDL_RenderPresent(renderer); 
@@ -349,6 +386,9 @@ void Game::Render()
 
 void Game::Destroy() 
 {
+	ImGui_ImplSDLRenderer2_Shutdown();
+	ImGui_ImplSDL2_Shutdown();
+	ImGui::DestroyContext();
 	// Destroying renderer and window in the inverse order they were created
 	SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(window);

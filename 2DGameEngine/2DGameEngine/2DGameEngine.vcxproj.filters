@@ -747,9 +747,6 @@
     <ClInclude Include="libs\imgui\imgui_internal.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="libs\imgui\imgui_sdl.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="libs\imgui\imstb_rectpack.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -868,6 +865,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Systems\RenderHealthBarSystem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\imgui\imgui_impl_sdl2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libs\imgui\imgui_impl_sdlrenderer2.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -1283,6 +1286,8 @@
     <None Include="SDL2_image.dll" />
     <None Include="SDL2_mixer.dll" />
     <None Include="SDL2_ttf.dll" />
+    <None Include="imgui.ini" />
+    <None Include="libs\imgui\LICENSE" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="libs\glm\detail\glm.cpp">
@@ -1295,9 +1300,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="libs\imgui\imgui_draw.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="libs\imgui\imgui_sdl.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="libs\imgui\imgui_widgets.cpp">
@@ -1316,6 +1318,15 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\AssetStore\AssetStore.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\imgui\imgui_impl_sdl2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\imgui\imgui_tables.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libs\imgui\imgui_impl_sdlrenderer2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

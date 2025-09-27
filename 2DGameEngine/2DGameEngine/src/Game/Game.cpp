@@ -40,6 +40,7 @@
 #include "../Systems/ProjectileLifecycleSystem.h"
 #include "../Systems/RenderTextSystem.h"
 #include "../Systems/RenderHealthBarSystem.h"
+#include "../Systems/RenderGUISystem.h"
 
 int Game::windowWidth;
 int Game::windwHeight;
@@ -219,6 +220,7 @@ void Game::LoadLevel(int level)
 	registry->AddSystem<ProjectileLifecicleSystem>();
 	registry->AddSystem<RenderTextSystem>();
 	registry->AddSystem<RenderHealthBarSystem>();
+	registry->AddSystem<RenderGUISystem>();
 
 	// Adding assets to the asset store
 	assetStore->AddTexture(renderer, "tank-image", "./assets/images/tank-panther-right.png");
@@ -372,12 +374,15 @@ void Game::Render()
 
 		// ImGui only visible in debug mode
 		 // Start the Dear ImGui frame
-		ImGui_ImplSDLRenderer2_NewFrame();
+
+		/*ImGui_ImplSDLRenderer2_NewFrame();
 		ImGui_ImplSDL2_NewFrame();
 		ImGui::NewFrame();
 		ImGui::ShowDemoWindow();
 		ImGui::Render();
-		ImGui_ImplSDLRenderer2_RenderDrawData(ImGui::GetDrawData(), renderer);
+		ImGui_ImplSDLRenderer2_RenderDrawData(ImGui::GetDrawData(), renderer);*/
+
+		registry->GetSystem<RenderGUISystem>().Update(registry, renderer);
 
 	}
 	// Double-Buffered Render: Draw and display on screen all objects previously called swapping buffers in each frame
@@ -389,6 +394,7 @@ void Game::Destroy()
 	ImGui_ImplSDLRenderer2_Shutdown();
 	ImGui_ImplSDL2_Shutdown();
 	ImGui::DestroyContext();
+
 	// Destroying renderer and window in the inverse order they were created
 	SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(window);

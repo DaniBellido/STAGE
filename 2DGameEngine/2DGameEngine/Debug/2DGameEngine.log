@@ -33,6 +33,9 @@ D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Systems\P
 D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Systems\ProjectileLifecycleSystem.h(21,46): warning C4018: '>': signed/unsigned mismatch
   (compiling source file 'src/Game/Game.cpp')
   
+D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Systems\RenderGUISystem.h(42,56): warning C4305: 'argument': truncation from 'double' to 'float'
+  (compiling source file 'src/Game/Game.cpp')
+  
 D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Game\Game.cpp(178,32): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Game\Game.cpp(178,24): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Game\Game.cpp(264,35): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
@@ -49,6 +52,9 @@ D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\ECS\ECS.h
           [
               _Ty=glm::vec2
           ]
+  
+D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\ECS\ECS.h(373,45): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  (compiling source file 'src/Game/Game.cpp')
   
 D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\ECS\ECS.h(181,14): warning C4018: '>=': signed/unsigned mismatch
   (compiling source file 'src/Game/Game.cpp')

@@ -375,14 +375,7 @@ void Game::Render()
 		// ImGui only visible in debug mode
 		 // Start the Dear ImGui frame
 
-		/*ImGui_ImplSDLRenderer2_NewFrame();
-		ImGui_ImplSDL2_NewFrame();
-		ImGui::NewFrame();
-		ImGui::ShowDemoWindow();
-		ImGui::Render();
-		ImGui_ImplSDLRenderer2_RenderDrawData(ImGui::GetDrawData(), renderer);*/
-
-		registry->GetSystem<RenderGUISystem>().Update(registry, renderer);
+		registry->GetSystem<RenderGUISystem>().Update(registry, renderer, camera);
 
 	}
 	// Double-Buffered Render: Draw and display on screen all objects previously called swapping buffers in each frame

@@ -1,4 +1,11 @@
-﻿  Game.cpp
+﻿  imgui_impl_sdl2.cpp
+  imgui_impl_sdlrenderer2.cpp
+  imgui_tables.cpp
+  AssetStore.cpp
+  ECS.cpp
+D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\ECS\ECS.cpp(74,16): warning C4018: '>=': signed/unsigned mismatch
+  Logger.cpp
+  Game.cpp
 D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Systems\MovementSystem.h(29,49): warning C4244: '+=': conversion from 'double' to 'T', possible loss of data
 D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Systems\MovementSystem.h(29,49): warning C4244:         with
 D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Systems\MovementSystem.h(29,49): warning C4244:         [
@@ -45,12 +52,12 @@ D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Game\Game
 D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Game\Game.cpp(265,36): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
 D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\ECS\ECS.h(360,18): warning C4018: '>=': signed/unsigned mismatch
   (compiling source file 'src/Game/Game.cpp')
-  D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\ECS\ECS.h(360,18):
-  the template instantiation context (the oldest one first) is
-  	D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Systems\ProjectileEmitSystem.h(65,16):
-  	see reference to function template instantiation 'void Entity::AddComponent<TransformComponent,glm::vec2&,glm::vec2,double>(glm::vec2 &,glm::vec2 &&,double &&)' being compiled
-  	D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\ECS\ECS.h(423,10):
-  	see reference to function template instantiation 'void Registry::AddComponent<TransformComponent,glm::vec2&,_Ty,double>(Entity,glm::vec2 &,_Ty &&,double &&)' being compiled
+      D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\ECS\ECS.h(360,18):
+      the template instantiation context (the oldest one first) is
+          D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Systems\ProjectileEmitSystem.h(65,17):
+          see reference to function template instantiation 'void Entity::AddComponent<TransformComponent,glm::vec2&,glm::vec2,double>(glm::vec2 &,glm::vec2 &&,double &&)' being compiled
+          D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\ECS\ECS.h(423,12):
+          see reference to function template instantiation 'void Registry::AddComponent<TransformComponent,glm::vec2&,_Ty,double>(Entity,glm::vec2 &,_Ty &&,double &&)' being compiled
           with
           [
               _Ty=glm::vec2
@@ -58,30 +65,39 @@ D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\ECS\ECS.h
   
 D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\ECS\ECS.h(181,14): warning C4018: '>=': signed/unsigned mismatch
   (compiling source file 'src/Game/Game.cpp')
-  D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\ECS\ECS.h(181,14):
-  the template instantiation context (the oldest one first) is
-  	D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\ECS\ECS.h(423,10):
-  	see reference to function template instantiation 'void Registry::AddComponent<CameraFollowComponent,>(Entity)' being compiled
-  	D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\ECS\ECS.h(368,29):
-  	while processing the default template argument of 'std::shared_ptr<IPool> &std::shared_ptr<IPool>::operator =(std::shared_ptr<_Ty2> &&) noexcept'
-  	D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\ECS\ECS.h(356,1):
-  	see reference to class template instantiation 'std::_SP_pointer_compatible<Pool<CameraFollowComponent>,IPool>' being compiled
-  	D:\Programs\Microsoft\Visual Studio\2022\VC\Tools\MSVC\14.38.33130\include\memory(1507,1):
-  	see reference to class template instantiation 'std::is_convertible<_Yty *,_Ty *>' being compiled
+      D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\ECS\ECS.h(181,14):
+      the template instantiation context (the oldest one first) is
+          D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\ECS\ECS.h(423,12):
+          see reference to function template instantiation 'void Registry::AddComponent<CameraFollowComponent,>(Entity)' being compiled
+          D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\ECS\ECS.h(368,29):
+          while compiling class template member function 'std::shared_ptr<IPool> &std::shared_ptr<IPool>::operator =(std::shared_ptr<_Ty2> &&) noexcept'
+          D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\ECS\ECS.h(368,29):
+          while processing the default template argument of 'std::shared_ptr<IPool> &std::shared_ptr<IPool>::operator =(std::shared_ptr<_Ty2> &&) noexcept'
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.42.34433\include\memory(1704,88):
+          see reference to class template instantiation 'std::_SP_pointer_compatible<Pool<CameraFollowComponent>,IPool>' being compiled
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.42.34433\include\memory(1496,62):
+          see reference to class template instantiation 'std::is_convertible<_Yty *,_Ty *>' being compiled
           with
           [
               _Yty=Pool<CameraFollowComponent>,
               _Ty=IPool
           ]
-  	D:\Programs\Microsoft\Visual Studio\2022\VC\Tools\MSVC\14.38.33130\include\type_traits(323,39):
-  	see reference to class template instantiation 'Pool<CameraFollowComponent>' being compiled
-  	D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\ECS\ECS.h(166,7):
-  	while compiling class template member function 'void Pool<CameraFollowComponent>::Set(int,T)'
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.42.34433\include\type_traits(322,39):
+          see reference to class template instantiation 'Pool<CameraFollowComponent>' being compiled
+          D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\ECS\ECS.h(166,7):
+          while compiling class template member function 'void Pool<CameraFollowComponent>::Set(int,T)'
           with
           [
               T=CameraFollowComponent
           ]
-  		D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\ECS\ECS.h(375,20):
-  		see the first reference to 'Pool<CameraFollowComponent>::Set' in 'Registry::AddComponent'
+              D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\ECS\ECS.h(375,20):
+              see the first reference to 'Pool<CameraFollowComponent>::Set' in 'Registry::AddComponent'
   
+  glm.cpp
+  imgui.cpp
+  imgui_demo.cpp
+  imgui_draw.cpp
+  imgui_widgets.cpp
+  Main.cpp
+  Generating Code...
   2DGameEngine.vcxproj -> D:\Development\MyRepository\2DGameEngine\2DGameEngine\Debug\2DGameEngine.exe

@@ -29,8 +29,20 @@ public:
 			transform.position.x += rigidbody.velocity.x * deltaTime;
 			transform.position.y += rigidbody.velocity.y * deltaTime;
 
-			/*Logger::Log("Entity id = " + std::to_string(entity.GetId()) +
-				" position is now (" + std::to_string(transform.position.x) + ", " + std::to_string(transform.position.y) + ")");*/
+
+			bool isEntityOutsideMap = (
+				transform.position.x < 0 ||
+				transform.position.x > Game::mapWidth ||
+				transform.position.y < 0 ||
+				transform.position.y > Game::mapHeight
+				);
+
+			// Kill entities that moves outside the map
+			if (isEntityOutsideMap && !entity.HasTag("player"))
+			{
+				entity.Kill();
+			}
+
 		}
 		
 	}

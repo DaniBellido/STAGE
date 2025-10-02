@@ -18,7 +18,7 @@ public:
 
 	void SubscribeToEvent(std::unique_ptr<EventBus>& eventBus) 
 	{
-		eventBus->SubscribeToEvent(this, &DamageSystem::onCollision);
+		eventBus->SubscribeToEvent<CollisionEvent>(this, &DamageSystem::onCollision);
 	}
 
 	void onCollision(CollisionEvent& event) 

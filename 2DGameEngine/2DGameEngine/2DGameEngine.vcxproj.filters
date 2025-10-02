@@ -1291,6 +1291,7 @@
     <None Include="SDL2_ttf.dll" />
     <None Include="imgui.ini" />
     <None Include="libs\imgui\LICENSE" />
+    <None Include="assets\scripts\myscript.lua" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="libs\glm\detail\glm.cpp">

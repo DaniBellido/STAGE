@@ -212,7 +212,8 @@ void Game::Setup()
 
 	// Load the first Level
 	LevelLoader loader;
-	loader.LoadLevel(registry, assetStore, renderer, 1);
+	lua.open_libraries(sol::lib::base, sol::lib::math);
+	loader.LoadLevel(lua, registry, assetStore, renderer, 1);
 
 }
 

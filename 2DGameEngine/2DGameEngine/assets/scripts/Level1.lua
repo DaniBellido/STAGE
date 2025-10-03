@@ -6,17 +6,15 @@ Level =
 	assets = 
 	{
 		[0] = 
-		{
-			{type = "texture", id = "tilemap-texture", file = "./assets/tilemaps/jungle.png"},
-			{type = "texture", id = "chopper-texture", file = "./assets/images/chopper-spritesheet.png"},
-			{type = "texture", id = "takeoff-texture", file = "./assets/images/base-takeoff.png"},
-			{type = "texture", id = "tank-texture", file = "./assets/images/tank-tiger-right.png"},
-			{type = "texture", id = "truck-texture", file = "./assets/images/truck-ford-left.png"},
-			{type = "texture", id = "radar-texture", file = "./assets/images/radar-spritesheet.png"},
-			{type = "texture", id = "bullet-texture", file = "./assets/images/bullet.png"},
-			{type = "font", id = "charriot-font", file = "./assets/fonts/charriot.ttf", font_size = 20},
-			{type = "font", id = "arial-font", file = "./assets/fonts/arial.ttf", font_size = 5}
-		}
+		{type = "texture", id = "tilemap-texture", file = "./assets/tilemaps/jungle.png"},
+		{type = "texture", id = "chopper-texture", file = "./assets/images/chopper-spritesheet.png"},
+		{type = "texture", id = "takeoff-texture", file = "./assets/images/base-takeoff.png"},
+		{type = "texture", id = "tank-texture", file = "./assets/images/tank-tiger-right.png"},
+		{type = "texture", id = "truck-texture", file = "./assets/images/truck-ford-left.png"},
+		{type = "texture", id = "radar-texture", file = "./assets/images/radar-spritesheet.png"},
+		{type = "texture", id = "bullet-texture", file = "./assets/images/bullet.png"},
+		{type = "font", id = "charriot-font", file = "./assets/fonts/charriot.ttf", font_size = 20},
+		{type = "font", id = "arial-font", file = "./assets/fonts/arial.ttf", font_size = 5}
 	},
 
 	--------------------------------------------------------------------------------------------
@@ -24,7 +22,7 @@ Level =
 	--------------------------------------------------------------------------------------------
 	tilemap = 
 	{
-		map_file = "assets/tilemaps/jungle.map",
+		map_file = "./assets/tilemaps/jungle.map",
 		texture_asset_id = "tilemap-texture",
 		num_rows = 20,
 		num_cols = 25,
@@ -47,7 +45,7 @@ Level =
 				{
 					position = { x = 240, y = 108 },
 					scale = { x = 1.0, y = 1.0 },
-					rotaion = 0.0, -- deg
+					rotation = 0.0, -- deg
 				},
 				rigidbody = 
 				{
@@ -68,7 +66,7 @@ Level =
 				boxcollider = 
 				{
 					offset = { x = 0, y = 5 },
-					width 32,
+					width = 32,
 					height = 25
 				},
 				health = 
@@ -78,7 +76,8 @@ Level =
 				projectile_emitter = 
 				{
 					projectile_velocity = { x = 100, y = 100 },
-					projectile_duration = 10000, --millisecs
+					projectile_duration = 10, --seconds
+					repeat_frequency = 0, --seconds
 					hit_percentage_damage = 10,
 					friendly = true
 				},
@@ -104,7 +103,7 @@ Level =
 				{
 					position = { x = 800, y = 150 },
 					scale = { x = 1.0, y = 1.0 },
-					rotaion = 0.0, -- deg
+					rotation = 0.0, -- deg
 				},
 				rigidbody = 
 				{
@@ -120,7 +119,7 @@ Level =
 				boxcollider = 
 				{
 					offset = { x = 0, y = 10 },
-					width 25,
+					width = 25,
 					height = 15
 				},
 				health = 
@@ -130,12 +129,11 @@ Level =
 				projectile_emitter = 
 				{
 					projectile_velocity = { x = 100, y = 0 },
-					projectile_duration = 1000, --millisecs
-					repeat_frequency = 3000, --millisecs
+					projectile_duration = 10, --seconds
+					repeat_frequency = 3, --seconds
 					hit_percentage_damage = 20,
 					friendly = false
-				},
-
+				}
 			}
 		} --,
 		--add more entities here

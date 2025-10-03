@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../ECS/ECS.h"
+#include "../Components/CameraFollowComponent.h"
 #include "SDL.h"
 
 class CameraMovementSystem :public System 

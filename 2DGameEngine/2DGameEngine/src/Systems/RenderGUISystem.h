@@ -3,6 +3,7 @@
 #include <SDL.h>
 #include <imgui/imgui.h>
 #include <imgui/imgui_impl_sdlrenderer2.h>
+#include "../Game/LevelLoader.h"
 
 #include "../Components/TransformComponent.h"
 #include "../Components/RigidBodyComponent.h"
@@ -133,7 +134,7 @@ public:
 				enemy.Group("enemies");
 				enemy.AddComponent<TransformComponent>(glm::vec2(posX, posY), glm::vec2(scaleX, scaleY), glm::degrees(rotation));
 				enemy.AddComponent<RigidBodyComponent>(glm::vec2(velocityX, velocityY));
-				enemy.AddComponent<SpriteComponent>(sprites[sprite_current], 32, 32, 2);
+				enemy.AddComponent<SpriteComponent>(sprites[sprite_current], 32, 32, 5);
 				enemy.AddComponent<BoxColliderComponent>(25, 20, glm::vec2(5, 5));
 				double projectileVelocityX = cos(projectileAngle) * projectileSpeed;
 				double projectileVelocityY = sin(projectileAngle) * projectileSpeed;

@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Components\ScriptComponent.h" />
     <ClInclude Include="src\Game\LevelLoader.h" />
     <ClInclude Include="libs\imgui\imgui_impl_sdl2.h" />
     <ClInclude Include="libs\imgui\imgui_impl_sdlrenderer2.h" />

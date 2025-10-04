@@ -3,7 +3,7 @@ local current_system_hour = os.date("*t").hour
 
 -- Use a day-map or night-map texture (9am - 6pm)
 local map_texture_asset_id
-if current_system_hour >= 9 and current_system_hour < 18 then
+if current_system_hour >= 9 and current_system_hour < 19 then
     map_texture_asset_id = "tilemap-texture-day"
 else
     map_texture_asset_id = "tilemap-texture-night"

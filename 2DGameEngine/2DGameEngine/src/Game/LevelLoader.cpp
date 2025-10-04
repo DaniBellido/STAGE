@@ -15,6 +15,7 @@
 #include "../Components/ProjectileEmitterComponent.h"
 #include "../Components/HealthComponent.h"
 #include "../Components/TextLabelComponent.h"
+#include "../Components/ScriptComponent.h"
 
 
 LevelLoader::LevelLoader() 
@@ -291,8 +292,17 @@ void LevelLoader::LoadLevel(sol::state& lua, const std::unique_ptr<Registry>& re
 						)
 					);
 			}
-			i++;
-		}
+			//Script Component
+			sol::optional<sol::table> script = entity["components"]["on_update_script"];
+			if (script != sol::nullopt)
+			{
+				sol::function func = entity["components"]["on_update_script"][0];
+				newEntity.AddComponent<ScriptComponent>(func);
+			}
+
+
+			
+		}i++; // Moving this increment will cause and endless load that won't render anything
 	}
 
 

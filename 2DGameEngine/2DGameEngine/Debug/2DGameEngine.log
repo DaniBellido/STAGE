@@ -1,1 +1,45 @@
-﻿  2DGameEngine.vcxproj -> D:\Development\MyRepository\2DGameEngine\2DGameEngine\Debug\2DGameEngine.exe
+﻿  LevelLoader.cpp
+D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Game\LevelLoader.cpp(117,41): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Game\LevelLoader.cpp(118,42): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\ECS\ECS.h(360,18): warning C4018: '>=': signed/unsigned mismatch
+  (compiling source file 'src/Game/LevelLoader.cpp')
+  D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\ECS\ECS.h(360,18):
+  the template instantiation context (the oldest one first) is
+  	D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Game\LevelLoader.cpp(112,8):
+  	see reference to function template instantiation 'void Entity::AddComponent<TransformComponent,glm::vec2,glm::vec2,double>(glm::vec2 &&,glm::vec2 &&,double &&)' being compiled
+  	D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\ECS\ECS.h(423,10):
+  	see reference to function template instantiation 'void Registry::AddComponent<TransformComponent,_Ty,_Ty,double>(Entity,_Ty &&,_Ty &&,double &&)' being compiled
+          with
+          [
+              _Ty=glm::vec2
+          ]
+  
+D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\ECS\ECS.h(181,14): warning C4018: '>=': signed/unsigned mismatch
+  (compiling source file 'src/Game/LevelLoader.cpp')
+  D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\ECS\ECS.h(181,14):
+  the template instantiation context (the oldest one first) is
+  	D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\ECS\ECS.h(423,10):
+  	see reference to function template instantiation 'void Registry::AddComponent<ScriptComponent,sol::function&>(Entity,sol::function &)' being compiled
+  	D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\ECS\ECS.h(368,29):
+  	while processing the default template argument of 'std::shared_ptr<IPool> &std::shared_ptr<IPool>::operator =(std::shared_ptr<_Ty2> &&) noexcept'
+  	D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\ECS\ECS.h(356,1):
+  	see reference to class template instantiation 'std::_SP_pointer_compatible<Pool<ScriptComponent>,IPool>' being compiled
+  	D:\Programs\Microsoft\Visual Studio\2022\VC\Tools\MSVC\14.38.33130\include\memory(1507,1):
+  	see reference to class template instantiation 'std::is_convertible<_Yty *,_Ty *>' being compiled
+          with
+          [
+              _Yty=Pool<ScriptComponent>,
+              _Ty=IPool
+          ]
+  	D:\Programs\Microsoft\Visual Studio\2022\VC\Tools\MSVC\14.38.33130\include\type_traits(323,39):
+  	see reference to class template instantiation 'Pool<ScriptComponent>' being compiled
+  	D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\ECS\ECS.h(166,7):
+  	while compiling class template member function 'void Pool<ScriptComponent>::Set(int,T)'
+          with
+          [
+              T=ScriptComponent
+          ]
+  		D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\ECS\ECS.h(375,20):
+  		see the first reference to 'Pool<ScriptComponent>::Set' in 'Registry::AddComponent'
+  
+  2DGameEngine.vcxproj -> D:\Development\MyRepository\2DGameEngine\2DGameEngine\Debug\2DGameEngine.exe

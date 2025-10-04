@@ -29,6 +29,7 @@
 #include "../Systems/RenderTextSystem.h"
 #include "../Systems/RenderHealthBarSystem.h"
 #include "../Systems/RenderGUISystem.h"
+#include "../Systems/ScriptSystem.h"
 
 int Game::windowWidth;
 int Game::windwHeight;
@@ -209,6 +210,7 @@ void Game::Setup()
 	registry->AddSystem<RenderTextSystem>();
 	registry->AddSystem<RenderHealthBarSystem>();
 	registry->AddSystem<RenderGUISystem>();
+	registry->AddSystem<ScriptSystem>();
 
 	// Load the first Level
 	LevelLoader loader;
@@ -254,6 +256,7 @@ void Game::Update()
 	registry->GetSystem<ProjectileEmitSystem>().Update(registry);
 	registry->GetSystem<CameraMovementSystem>().Update(camera);
 	registry->GetSystem<ProjectileLifecicleSystem>().Update();
+	registry->GetSystem<ScriptSystem>().Update();
 	
 
 }

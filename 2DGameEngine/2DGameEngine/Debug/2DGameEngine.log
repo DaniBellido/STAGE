@@ -39,18 +39,46 @@ D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Systems\R
 D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Systems\RenderGUISystem.h(93,22): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
   (compiling source file 'src/Game/Game.cpp')
   
-D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Systems\ScriptSystem.h(19,26): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
-D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Systems\ScriptSystem.h(19,26): warning C4244:         with
-D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Systems\ScriptSystem.h(19,26): warning C4244:         [
-D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Systems\ScriptSystem.h(19,26): warning C4244:             T=float
-D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Systems\ScriptSystem.h(19,26): warning C4244:         ]
+D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Systems\ScriptSystem.h(41,26): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
+D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Systems\ScriptSystem.h(41,26): warning C4244:         with
+D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Systems\ScriptSystem.h(41,26): warning C4244:         [
+D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Systems\ScriptSystem.h(41,26): warning C4244:             T=float
+D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Systems\ScriptSystem.h(41,26): warning C4244:         ]
   (compiling source file 'src/Game/Game.cpp')
   
-D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Systems\ScriptSystem.h(20,26): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
-D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Systems\ScriptSystem.h(20,26): warning C4244:         with
-D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Systems\ScriptSystem.h(20,26): warning C4244:         [
-D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Systems\ScriptSystem.h(20,26): warning C4244:             T=float
-D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Systems\ScriptSystem.h(20,26): warning C4244:         ]
+D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Systems\ScriptSystem.h(42,26): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
+D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Systems\ScriptSystem.h(42,26): warning C4244:         with
+D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Systems\ScriptSystem.h(42,26): warning C4244:         [
+D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Systems\ScriptSystem.h(42,26): warning C4244:             T=float
+D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Systems\ScriptSystem.h(42,26): warning C4244:         ]
+  (compiling source file 'src/Game/Game.cpp')
+  
+D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Systems\ScriptSystem.h(56,26): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
+D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Systems\ScriptSystem.h(56,26): warning C4244:         with
+D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Systems\ScriptSystem.h(56,26): warning C4244:         [
+D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Systems\ScriptSystem.h(56,26): warning C4244:             T=float
+D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Systems\ScriptSystem.h(56,26): warning C4244:         ]
+  (compiling source file 'src/Game/Game.cpp')
+  
+D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Systems\ScriptSystem.h(57,26): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
+D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Systems\ScriptSystem.h(57,26): warning C4244:         with
+D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Systems\ScriptSystem.h(57,26): warning C4244:         [
+D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Systems\ScriptSystem.h(57,26): warning C4244:             T=float
+D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Systems\ScriptSystem.h(57,26): warning C4244:         ]
+  (compiling source file 'src/Game/Game.cpp')
+  
+D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Systems\ScriptSystem.h(95,44): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
+D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Systems\ScriptSystem.h(95,44): warning C4244:         with
+D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Systems\ScriptSystem.h(95,44): warning C4244:         [
+D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Systems\ScriptSystem.h(95,44): warning C4244:             T=float
+D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Systems\ScriptSystem.h(95,44): warning C4244:         ]
+  (compiling source file 'src/Game/Game.cpp')
+  
+D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Systems\ScriptSystem.h(96,44): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
+D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Systems\ScriptSystem.h(96,44): warning C4244:         with
+D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Systems\ScriptSystem.h(96,44): warning C4244:         [
+D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Systems\ScriptSystem.h(96,44): warning C4244:             T=float
+D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Systems\ScriptSystem.h(96,44): warning C4244:         ]
   (compiling source file 'src/Game/Game.cpp')
   
 D:\Development\MyRepository\2DGameEngine\2DGameEngine\2DGameEngine\src\Game\Game.cpp(167,32): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
